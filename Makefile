@@ -3,7 +3,7 @@ COMMIT_SHA1 := $(shell git rev-parse HEAD )
 
 # 版本手动指定，由于合约名称在链上有规则，去掉了版本号中 .
 VERSION=v100
-LDFLAGS := "-s -w -X 'chainweaver.org.cn/chainweaver/trade-guard/notification-contract-go/version.BuildTime=${BUILD_TIME}'  -X 'chainweaver.org.cn/chainweaver/trade-guard/notification-contract-go/version.CommitID=${COMMIT_SHA1}'  -X 'chainweaver.org.cn/chainweaver/trade-guard/notification-contract-go/version.Version=${VERSION}'"
+LDFLAGS := "-s -w -X 'github.com/jackz-jones/nft-contract-go/version.BuildTime=${BUILD_TIME}'  -X 'github.com/jackz-jones/nft-contract-go/version.CommitID=${COMMIT_SHA1}'  -X 'github.com/jackz-jones/nft-contract-go/version.Version=${VERSION}'"
 
 BUILD_NAME := trade-guard-nft-${VERSION}
 
@@ -28,7 +28,5 @@ comment:
 pre-commit: lint ut comment
 
 update-mod:
-	go get github.com/ethereum/go-ethereum@v1.14.11
-	go get chainmaker.org/chainmaker/sdk-go/v2@v2.3.8
 	go get chainmaker.org/chainmaker/contract-sdk-go/v2@v2.3.9
 	go mod tidy
